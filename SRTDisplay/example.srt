@@ -1,0 +1,77 @@
+0
+00:00:00,420 --> 00:00:03,970
+In this tutorial I will show you how to evaluate the step response
+
+1
+00:00:03,970 --> 00:00:07,640
+of an RC circuit using standard circuit techniques
+
+2
+00:00:07,640 --> 00:00:13,940
+Now by step response what we mean is that the voltage
+or current applied to the circuit involves a jump
+
+4
+00:00:13,940 --> 00:00:17,050
+As you can see in this case our voltage source
+initially is off before time "t" equal to 0 
+and jumps up to 12 volts at time t equal to zero.
+
+7
+00:00:23,900 --> 00:00:27,640
+We want to do in this case is evaluate the current through the
+capacitor and at the same time 
+
+10
+00:00:31,840 --> 00:00:37,380
+we'll also evaluate the voltage which is both the voltage on the capacitor and the voltage across the three kilo ohm resistor 
+
+13
+00:00:41,090 --> 00:00:45,760
+now the key thing to remember about step response evaluation is that
+we need to evaluate the time constant
+
+15
+00:00:48,809 --> 00:00:52,949
+initial and final values. Now each value
+
+16
+00:00:52,949 --> 00:00:57,309
+so the time constant we denote by tau and  tau
+
+17
+00:00:57,309 --> 00:01:02,460
+represents the value we'll see when we have this decaying exponential
+
+18
+00:01:02,460 --> 00:01:05,860
+e to the minus t over tau
+
+19
+00:01:05,860 --> 00:01:09,060
+response. In a circuit like the one
+we're looking at, the voltages and currents
+
+21
+00:01:12,780 --> 00:01:17,530
+all experience the same time constant. The basic explanation for this is that
+
+22
+00:01:17,530 --> 00:01:18,830
+if you would imagine the
+
+23
+00:01:18,830 --> 00:01:23,170
+voltages on the six kilo ohm resistor and the three-kilo ohm resistor
+
+24
+00:01:23,170 --> 00:01:26,950
+they have to add up to a flat  value, so whatever
+
+25
+00:01:26,950 --> 00:01:32,210
+e to the minus t over tau  shape one as the other one also has to have the same shape
+
+26
+00:01:32,210 --> 00:01:35,880
+the same thing happened at the node when we are evaluating KCL
