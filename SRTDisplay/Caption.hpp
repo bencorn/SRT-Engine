@@ -16,26 +16,26 @@ class Caption
 public:
 
 	Caption();
-	Caption(int, double, double, vector<string>&);
+	Caption(int, int, int, vector<string>&);
 
-	double getStart();
-	double getEnd();
-	double getDuration();
+	int getStart();
+	int getEnd();
+	int getDuration();
 	int getID();
 	void dispSub();
 
 private:
 
 	int id;
-	double start;
-	double end;
-	double duration;
+	int start;
+	int end;
+	int duration;
 	vector<string> subs;
 
 	// The following methods are private, and are only used within the Caption class
-	void setStart(double);
-	void setEnd(double);
-	double setDuration();
+	void setStart(int);
+	void setEnd(int);
+	int setDuration();
 
 };
 

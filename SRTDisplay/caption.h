@@ -1,30 +1,42 @@
-#ifndef CAPTION_H
-#define CAPTION_
+//AUTHOR1: CONRAD LIU cliu21@bu.edu
+//AUTHOR2: BEN CORN bcorn@bu.edu
 
-#include <vector>
-#include <ostream>
-#include <chrono>
-#include <thread>
+#ifndef CAPTIONHPP
+#define CAPTIONHPP
+
 #include <iostream>
+#include <string>
+#include <vector>
+#include <string>
 
 using namespace std;
 
-class Caption {
+class Caption
+{
 public:
-	Caption(int capId, int tBegin, int tEnd, vector<string> subs);
-	double calcPause(int begin, int end);
-	void displaySub(double pause, vector<string> subs);
-	//this_thread::sleep_for(chrono::seconds(1));
+
+	Caption();
+	Caption(int, int, int, vector<string>&);
+
+	int getStart();
+	int getEnd();
+	int getDuration();
+	int getID();
+	void dispSub();
 
 private:
+
 	int id;
-	int timeBegin;
-	int timeEnd;
-	vector<string> subtitles;
+	int start;
+	int end;
+	int duration;
+	vector<string> subs;
+
+	// The following methods are private, and are only used within the Caption class
+	//void setStart();
+	//void setEnd();
+	int setDuration();
+
 };
-
-
-
-
 
 #endif

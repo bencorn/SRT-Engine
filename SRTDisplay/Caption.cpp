@@ -14,7 +14,7 @@ Caption::Caption() {
 
 // Default constructor not defined, since
 // objects will always be created with the following parameters
-Caption::Caption(int subID, double tStart, double tEnd, vector<string>& subtitles) {
+Caption::Caption(int subID, int tStart, int tEnd, vector<string>& subtitles) {
 	id = subID;
 	setStart(tStart);
 	setEnd(tEnd);
@@ -23,31 +23,30 @@ Caption::Caption(int subID, double tStart, double tEnd, vector<string>& subtitle
 }
 
 // Implementing various getters and setters
-
-void Caption::setStart(double s) {
+void Caption::setStart(int s) {
 	start = s;
 }
 
-void Caption::setEnd(double e) {
+void Caption::setEnd(int e) {
 	end = e;
 }
 
-double Caption::setDuration() {
+int Caption::setDuration() {
 	return end - start;
 }
 
 // Important when first executing main function:
 // In its first iteration, tells main how long to pause for
-double Caption::getStart() {
+int Caption::getStart() {
 	return start;
 }
 
-double Caption::getEnd() {
+int Caption::getEnd() {
 	return end;
 }
 
 // Returns difference between start and end times; Tells main method how long to pause for
-double Caption::getDuration() {
+int Caption::getDuration() {
 	return duration;
 }
 

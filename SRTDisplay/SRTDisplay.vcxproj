@@ -116,6 +116,7 @@
     <ClInclude Include="caption.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Caption.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

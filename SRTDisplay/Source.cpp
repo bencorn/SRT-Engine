@@ -6,13 +6,18 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <chrono>
+#include <thread>
 #include <math.h>
 #include "caption.h"
 
 using namespace std;
 
 // start and end times in srt format to ms 
-vector <double> parseTime(string line);
+vector <int> parseTime(string line);
+
+// clear screen after delay
+void ClearScreen();
 
 
 int main(int argc, const char* argv[]) {
@@ -34,7 +39,7 @@ int main(int argc, const char* argv[]) {
 	vector <Caption> captionObjects;
 
 	// start and end time
-	vector <double> captionTime;
+	vector <int> captionTime;
 
 	if (srtfile.is_open()) {
 		while (getline(srtfile, line)) {
@@ -42,23 +47,24 @@ int main(int argc, const char* argv[]) {
 			if (line.length() == 0) {
 				cnt = 0;
 				captionObjects.push_back(Caption(id, captionTime[0], captionTime[1], captionLines));
+				captionLines.clear();
 				continue;
 			}
 
 			// if line length 0 -> new caption block.
 			if (cnt == 0) {
 				id = stoi(line);
-				cout << id << '\n';
+				//cout << id << '\n';
 			}
 
 			else if (cnt == 1) {
 				string time = line;
 				captionTime = parseTime(time);
-				cout << captionTime[0] << " --> " << captionTime[1] << '\n';
+				//cout << captionTime[0] << " --> " << captionTime[1] << '\n';
 			}
 
 			else if (cnt > 1) {
-				cout << line << '\n';
+				//cout << line << '\n';
 				captionLines.push_back(line);
 			}
 
@@ -69,16 +75,39 @@ int main(int argc, const char* argv[]) {
 
 	else cout << "SRT file could not be opened, please check your file name again.";
 
+	// sleeping until first subtitle
+	ClearScreen();
+	this_thread::sleep_for(chrono::milliseconds(captionObjects[0].getStart()));
+	captionObjects[0].dispSub();
+	this_thread::sleep_for(chrono::milliseconds(captionObjects[0].getDuration()));
+	ClearScreen();
+
+	for (int j = 1; j < captionObjects.size(); j++) {
+		if (j == 1) {
+			this_thread::sleep_for(chrono::milliseconds(captionObjects[j].getStart() - captionObjects[0].getEnd()));
+			captionObjects[j].dispSub();
+		}
+		else {
+			this_thread::sleep_for(chrono::milliseconds(captionObjects[j].getStart() - captionObjects[j-1].getEnd()));
+			captionObjects[j].dispSub();
+
+		}
+
+		this_thread::sleep_for(chrono::milliseconds(captionObjects[j].getDuration()));
+		ClearScreen();
+
+	}
+
 	system("PAUSE");
 	return 0;
 
 
 }
 
-vector <double> parseTime(string line) {
+vector <int> parseTime(string line) {
 
-	vector <double> time;
-	double hours, minutes, seconds, mili;
+	vector <int> time;
+	int hours, minutes, seconds, mili;
 
 	hours = stoi(line.substr(0, 2)) * 3600000;
 	minutes = stoi(line.substr(3, 2)) * 60000;
@@ -96,4 +125,9 @@ vector <double> parseTime(string line) {
 
 	return time;
 
+}
+
+void ClearScreen()
+{
+	cout << string(80, '\n');
 }
