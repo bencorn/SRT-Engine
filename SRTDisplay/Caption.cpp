@@ -16,13 +16,21 @@ Caption::Caption() {
 // objects will always be created with the following parameters
 Caption::Caption(int subID, double tStart, double tEnd, vector<string>& subtitles) {
 	id = subID;
-	start = tStart;
-	end = tEnd;
+	setStart(tStart);
+	setEnd(tEnd);
 	duration = setDuration();
 	subs = subtitles;
 }
 
 // Implementing various getters and setters
+
+void Caption::setStart(double s) {
+	start = s;
+}
+
+void Caption::setEnd(double e) {
+	end = e;
+}
 
 double Caption::setDuration() {
 	return end - start;
