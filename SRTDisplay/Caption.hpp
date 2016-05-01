@@ -32,6 +32,7 @@ private:
 	double duration;
 	vector<string> subs;
 
+	// The following methods are private, and are only used within the Caption class
 	void setStart();
 	void setEnd();
 	double setDuration();

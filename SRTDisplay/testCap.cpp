@@ -7,6 +7,8 @@
 #include <string>
 using namespace std;
 
+// Tester class for "Caption.cpp". Output is shown below after the main function
+
 int main() {
 	vector<string> cap = {"one", "two", "three"};
 	Caption captest(1, 12345, 13000, cap);
@@ -21,4 +23,8 @@ int main() {
 //
 // 1
 // 12345 13000 655
-// one two three 
+// one
+// two
+// three
+// 
+// >>
